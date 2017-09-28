@@ -8,21 +8,19 @@ def BubbleSort(A):
     m=0
     for i in range(0,n-1):
         for j in range(1,n-i):
-            if A[j-1]<A[j]:
-                aux=A[j]
-                A[j]=A[i]
-                A[i]=aux
+            if A[j]<A[j-1]:
+                A[j],A[j-1]=A[j-1],A[j]
                 m=1
-        if m==1: break
+        if m==0: break
         m=0
     return A
     
 
 if __name__=='__main__':
-    A=[]
+    A=[0 for i in range(n)]
+
     for i in range(n):
-        V=random.randrange(0,n)
-        A[i]=V
+        A[i]=random.randint(0,n-1)
 
     print("Los numeros a ordenar son\n")
     print(A)

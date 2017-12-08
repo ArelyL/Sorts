@@ -1,18 +1,22 @@
 #!/env/bin/python
 
 import random
-
-n=10000
     
 def BubbleSortWords(Lista):
     k=0
     m=0
     n=len(Lista)
+    q=0
     
-    for i in range(0,n-1):
-        for j in range(1,n-i):
-            if Lista[j]<Lista[j-1]:
-                Lista[j],Lista[j-1]=Lista[j-1],Lista[j]
+    for i in range(0,n):
+        for j in range(i, n-i-1):
+            if Lista[j+1]<Lista[j]:
+                Lista[j+1],Lista[j]=Lista[j],Lista[j+1]
+                m=1
+            k+=1
+        for r in range(n-2-i,i):
+            if Lista[r]<Lista[r-1]:
+                Lista[r],Lista[r-1]=Lista[r-1],Lista[r]
                 m=1
             k+=1
         if m==0: break
@@ -29,4 +33,3 @@ if __name__=='__main__':
      Lista=archivo.readlines()
 
      BubbleSortWords(Lista)
-

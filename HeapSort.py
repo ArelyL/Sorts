@@ -3,7 +3,7 @@
 import random
 import math
 
-n=100
+n=10
 
 def Heap(N, Large):
     M=[[-10 for i in range(3)] for i in range(int(Large/2)-1)]
@@ -16,11 +16,11 @@ def Heap(N, Large):
         M[j][2]=2*i+2
         j-=1
 
-    #print M
+    print M
 
     if Large%2==0:
         #print Large/2 -1, Large-1
-        R=Swaping(N[Large/2-1], N[Large-1], -100)
+        R=Swaping(N[Large/2-1], N[Large-1])
         N[Large/2 -1]=R[0]
         N[Large -1]=R[1]
 
@@ -34,7 +34,7 @@ def Heap(N, Large):
     N[0], N[Large-1] = N[Large-1], N[0]
     Large-=1
 
-    if Large>0:
+    if Large>2:
         Heap(N, Large)
     else:
         R=Swaping(N[0], N[1], N[2])
@@ -45,11 +45,11 @@ def Heap(N, Large):
         print N#, Large
     
 
-def Swaping(N1, N2, N3):
+def Swaping(N1, N2, N3=None):
     if N1>N2:
         N1, N2 = N2, N1
         
-    if N3!=-100:
+    if N3!=None:
         if N1>N3:
             N1, N3 = N3, N1
 
@@ -64,7 +64,7 @@ if __name__=='__main__':
     for i in range(n):
         N[i]=random.randint(0,n)
 
-   
+    N=[5, 9, 8, 6, 4, 8, 10, 7, 3, 7]
     print "Los numeros a ordenar son\n", N
     print "Los numeros ordenados son\n"
     Heap(N, n)
